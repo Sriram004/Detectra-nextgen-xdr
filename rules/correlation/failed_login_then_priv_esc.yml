@@ -1,0 +1,8 @@
+id: corr_failed_login_then_priv_esc
+title: Failed login burst followed by privilege escalation
+description: Triggers when >=5 failed logins are followed by privilege escalation within 15 minutes.
+window_minutes: 15
+sequence:
+  - event.action: failed_login
+    min_count: 5
+  - event.action: privilege_escalation

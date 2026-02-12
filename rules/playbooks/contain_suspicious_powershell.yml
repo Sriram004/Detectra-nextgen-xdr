@@ -1,0 +1,14 @@
+name: Contain Suspicious PowerShell Host
+trigger:
+  rule_id: suspicious_powershell_encoded
+steps:
+  - action: isolate_endpoint
+    params:
+      host_id: "{{alert.host_id}}"
+  - action: block_ip
+    params:
+      ip: "{{alert.destination_ip}}"
+  - action: create_ticket
+    params:
+      system: jira
+      project: SEC
